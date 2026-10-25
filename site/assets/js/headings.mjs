@@ -14,7 +14,10 @@ export function mountHeadings(root, { reducedMotion, charWidth }) {
     const box = getComputedStyle(h.w.parentElement);
     const maxWidth = h.w.parentElement.clientWidth - parseFloat(box.paddingLeft) - parseFloat(box.paddingRight);
     const preferred = parseFloat(getComputedStyle(h.ph).fontSize);
-    h.ph.style.fontSize = fitHeadingFont({ text: h.ph.textContent, maxWidth, preferred, charWidth }) + 'px';
+    const size = fitHeadingFont({ text: h.ph.textContent, maxWidth, preferred, charWidth });
+    h.ph.style.fontSize = size + 'px';
+    // small sizes round each glyph's width, so correct by what was actually laid out
+    if (h.ph.scrollWidth > maxWidth) h.ph.style.fontSize = size * maxWidth / h.ph.scrollWidth + 'px';
   };
   const build = h => {
     h.g = rasterizeElement(h.ph, { cell: parseFloat(h.ph.style.fontSize) < 36 ? 1.9 : 2.4, charWidth });
@@ -39,6 +42,14 @@ export function mountHeadings(root, { reducedMotion, charWidth }) {
   };
 
   heads.forEach(fit);
+  let timer = 0;
+  addEventListener('resize', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => heads.forEach(h => {
+      fit(h);
+      if (h.w.classList.contains('done')) { build(h); paint(h.ov, h.g); }
+    }), 150);
+  });
   if (reducedMotion) return;
 
   const byWrap = new Map(heads.map(h => [h.w, h]));
@@ -61,13 +72,4 @@ export function mountHeadings(root, { reducedMotion, charWidth }) {
       h.w.style.setProperty('--my', '-999px');
     });
   }
-
-  let timer = 0;
-  addEventListener('resize', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => heads.forEach(h => {
-      fit(h);
-      if (h.w.classList.contains('done')) { build(h); paint(h.ov, h.g); }
-    }), 150);
-  });
 }

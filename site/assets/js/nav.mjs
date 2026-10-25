@@ -9,7 +9,8 @@ export function mountNav(doc) {
 
   const update = () => {
     if (hint) hint.style.opacity = scrollY > 8 ? 0 : 1;
-    const key = fixed ? 'projects' : currentSection(sections.map(s => ({ key: s.dataset.sec, top: s.getBoundingClientRect().top })), bar.getBoundingClientRect().bottom + 80);
+    const atBottom = innerHeight + scrollY >= doc.documentElement.scrollHeight - 2;
+    const key = fixed ? 'projects' : currentSection(sections.map(s => ({ key: s.dataset.sec, top: s.getBoundingClientRect().top })), bar.getBoundingClientRect().bottom + 80, atBottom);
     cwd.textContent = fixed || '~/laith-sh' + (key ? '/' + key : '');
     links.forEach(a => a.classList.toggle('on', a.dataset.sec === key));
   };

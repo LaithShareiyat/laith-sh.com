@@ -25,6 +25,10 @@ test('ASCII layers are hidden from screen readers and html starts without the js
   assert.ok(!/<html[^>]*class=/.test(html));
 });
 
+test('if the scripts fail to load, the page falls back to plain text', () => {
+  assert.ok(/<script type="module"[^>]*onerror="document\.documentElement\.classList\.remove\('js'\)"/.test(index()));
+});
+
 test('sections are path headings with matching nav links', () => {
   const html = index();
   assert.ok(html.includes('<h2 class="ph">/experience</h2>'));

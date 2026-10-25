@@ -32,7 +32,7 @@ function head(site, { title, description, path }) {
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>if ('noModule' in HTMLScriptElement.prototype) document.documentElement.classList.add('js')</script>
-<script type="module" src="/assets/js/main.mjs"></script>
+<script type="module" src="/assets/js/main.mjs" onerror="document.documentElement.classList.remove('js')"></script>
 </head>`;
 }
 
