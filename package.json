@@ -1,0 +1,12 @@
+{
+  "name": "laith-sh.com",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/",
+    "build": "node build/build.mjs",
+    "serve": "python3 -m http.server 8080 -d dist"
+  }
+}
