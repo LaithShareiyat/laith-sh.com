@@ -1,0 +1,47 @@
+{
+  "name": "Laith Shareiyat",
+  "tagline": "Engineer · Researcher · Builder",
+  "description": "Laith Shareiyat: engineer, researcher and builder. Experience, projects, publications and CV.",
+  "url": "https://laith-sh.com",
+  "repo": "https://github.com/LaithShareiyat/laith-sh.com",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/laithsh",
+    "github": "https://github.com/LaithShareiyat",
+    "cvForm": null,
+    "email": null
+  },
+  "about": "Two or three sentences in your own voice: what you build, the problems you can't leave alone, and why. This is where the passion shows.",
+  "now": "one line on what you're working on or learning this month",
+  "experience": [
+    { "from": "2024", "to": "now", "role": "Role title", "org": "Company name", "points": ["What you built, and the measurable result.", "A second result: scale, speed, money, users."] },
+    { "from": "2022", "to": "2024", "role": "Role title", "org": "Company name", "points": ["What you built, and the measurable result.", "A second result: scale, speed, money, users."] },
+    { "from": "2020", "to": "2022", "role": "Role title", "org": "Company name", "points": ["What you built, and the measurable result.", "A second result: scale, speed, money, users."] }
+  ],
+  "projects": [
+    {
+      "slug": "project-one", "name": "Project one", "pitch": "One sentence: the problem it solves and what makes your approach clever.",
+      "tags": ["python", "pytorch", "aws"], "code": "https://github.com/LaithShareiyat",
+      "role": "lead engineer", "year": "2025",
+      "problem": "What was broken or missing, and why it mattered. Two or three sentences.",
+      "approach": "The interesting technical decisions: what you tried, what you threw away, and why the final design works.",
+      "figure": null,
+      "result": { "stat": "3× faster", "text": "The number that proves it, plus what happened next." }
+    },
+    {
+      "slug": "project-two", "name": "Project two", "pitch": "One sentence: the problem it solves and what makes your approach clever.",
+      "tags": ["typescript", "postgres"], "code": null,
+      "role": "solo", "year": "2024",
+      "problem": "What was broken or missing, and why it mattered. Two or three sentences.",
+      "approach": "The interesting technical decisions: what you tried, what you threw away, and why the final design works.",
+      "figure": null,
+      "result": { "stat": "40% less", "text": "The number that proves it, plus what happened next." }
+    },
+    { "slug": "project-three", "name": "Project three", "pitch": "One sentence: the problem it solves and what makes your approach clever.", "tags": ["c++", "embedded"], "code": null },
+    { "slug": "project-four", "name": "Project four", "pitch": "One sentence: the problem it solves and what makes your approach clever.", "tags": ["rust"], "code": null }
+  ],
+  "publications": [
+    { "title": "Title of the paper goes here, about this long, maybe a little longer", "url": null, "authors": ["L. Shareiyat", "A. Coauthor", "B. Coauthor"], "venue": "Journal or conference", "year": 2025, "pdf": null, "doi": null, "bibtex": null },
+    { "title": "Title of the paper goes here, about this long, maybe a little longer", "url": null, "authors": ["A. Coauthor", "L. Shareiyat"], "venue": "Journal or conference", "year": 2024, "pdf": null, "doi": null, "bibtex": null },
+    { "title": "Title of the paper goes here, about this long, maybe a little longer", "url": null, "authors": ["L. Shareiyat", "B. Coauthor"], "venue": "Journal or conference", "year": 2023, "pdf": null, "doi": null, "bibtex": null }
+  ]
+}
