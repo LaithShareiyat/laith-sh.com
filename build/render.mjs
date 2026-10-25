@@ -31,7 +31,7 @@ function head(site, { title, description, path }) {
 <meta name="theme-color" content="#1C1C1C">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="/assets/css/site.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>if ('noModule' in HTMLScriptElement.prototype) document.documentElement.classList.add('js')</script>
 <script type="module" src="/assets/js/main.mjs"></script>
 </head>`;
 }
