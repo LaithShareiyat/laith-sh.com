@@ -19,9 +19,11 @@ export function mountLanding(header, { reducedMotion, charWidth }) {
     preN.style.fontSize = f.nameFont + 'px';
     preT.style.fontSize = f.tagFont + 'px';
     preT.style.marginTop = f.gap + 'px';
-    for (const g of [gN, gT]) g.delay = Float32Array.from(g.cov, (_, i) => (i % g.cols) / g.cols * 0.7 + Math.random() * 0.6);
-    // the name settles on random glyphs of matching weight, frozen, instead of the uniform ramp
-    gN.glyphs = Array.from(gN.cov, a => textureChar(a));
+    // both settle on random glyphs of matching weight, frozen, instead of the uniform ramp
+    for (const g of [gN, gT]) {
+      g.delay = Float32Array.from(g.cov, (_, i) => (i % g.cols) / g.cols * 0.7 + Math.random() * 0.6);
+      g.glyphs = Array.from(g.cov, a => textureChar(a));
+    }
   };
 
   const nearFor = (pre, g) => {
@@ -34,7 +36,7 @@ export function mountLanding(header, { reducedMotion, charWidth }) {
   };
   const draw = t => {
     paint(preN, gN, { t, delay: gN.delay, near: nearFor(preN, gN), glyphs: gN.glyphs });
-    paint(preT, gT, { t, delay: gT.delay, near: nearFor(preT, gT) });
+    paint(preT, gT, { t, delay: gT.delay, near: nearFor(preT, gT), glyphs: gT.glyphs });
   };
   // one repaint per pointer move; nothing runs while the pointer is still
   const redraw = () => {
