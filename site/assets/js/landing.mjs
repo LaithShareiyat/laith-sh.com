@@ -1,4 +1,4 @@
-import { pixelText, fitLanding, GLYPHS } from './ascii.mjs';
+import { pixelText, fitLanding, textureChar } from './ascii.mjs';
 import { rasterizeLines, paint } from './raster.mjs';
 import { run } from './loop.mjs';
 
@@ -20,8 +20,8 @@ export function mountLanding(header, { reducedMotion, charWidth }) {
     preT.style.fontSize = f.tagFont + 'px';
     preT.style.marginTop = f.gap + 'px';
     for (const g of [gN, gT]) g.delay = Float32Array.from(g.cov, (_, i) => (i % g.cols) / g.cols * 0.7 + Math.random() * 0.6);
-    // the name settles on its own scramble, frozen, instead of the density ramp
-    gN.glyphs = Array.from(gN.cov, () => GLYPHS[(Math.random() * GLYPHS.length) | 0]);
+    // the name settles on random glyphs of matching weight, frozen, instead of the uniform ramp
+    gN.glyphs = Array.from(gN.cov, a => textureChar(a));
   };
 
   const nearFor = (pre, g) => {

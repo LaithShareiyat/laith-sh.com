@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pixelText, rampChar, fitLanding, fitHeadingFont } from '../site/assets/js/ascii.mjs';
+import { pixelText, rampChar, textureChar, TEXTURE, fitLanding, fitHeadingFont } from '../site/assets/js/ascii.mjs';
 
 test('pixelText spacing: one pixel = 2 cols, 1-pixel gap', () => {
   const g = pixelText('Ei'); // E is 4 wide, i is 1 wide
@@ -16,6 +16,16 @@ test('rampChar', () => {
   assert.equal(rampChar(1), '@');
   assert.equal(rampChar(0.5), '+');
   assert.equal(rampChar(0.01), '.');
+});
+
+test('textureChar stays within the coverage band', () => {
+  for (const r of [0, 0.5, 0.999]) {
+    assert.ok(TEXTURE[2].includes(textureChar(1, r)));
+    assert.ok(TEXTURE[1].includes(textureChar(0.6, r)));
+    assert.ok(TEXTURE[0].includes(textureChar(0.2, r)));
+  }
+  assert.equal(textureChar(1, 0), '#');
+  assert.equal(textureChar(1, 0.999), '&');
 });
 
 test('fitLanding: width-limited on a laptop', () => {

@@ -42,6 +42,13 @@ export function pixelText(text, xs = 2) {
 // Ramp character for ink coverage `a` (0..1); `boost` densifies it near the cursor
 export const rampChar = (a, boost = 0) => RAMP[Math.min(9, Math.max(1, Math.round(a * 9 + boost)))];
 
+// Light, mid and heavy glyphs; the settled name picks one at random from the band its coverage falls in
+export const TEXTURE = ['-:^~!', '*+=?[]{}', '#%$@&'];
+export const textureChar = (a, r = Math.random()) => {
+  const band = TEXTURE[a >= 0.75 ? 2 : a >= 0.45 ? 1 : 0];
+  return band[(r * band.length) | 0];
+};
+
 // Landing sizes: name and tagline take shares of 90% of the width, then shrink together
 // if the block would be taller than 62% of the free height
 export function fitLanding({ width, height, upright, nameRows, nameCols, tagRows, tagCols, charWidth }) {
