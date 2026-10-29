@@ -29,7 +29,9 @@ function head(site, { title, description, path }) {
 <meta property="og:image" content="${esc(site.url)}/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1C1C1C">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>if ('noModule' in HTMLScriptElement.prototype) document.documentElement.classList.add('js')</script>
 <script type="module" src="/assets/js/main.mjs" onerror="document.documentElement.classList.remove('js')"></script>
