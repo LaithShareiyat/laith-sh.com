@@ -28,7 +28,7 @@ function head(site, { title, description, path }) {
 <meta property="og:url" content="${esc(site.url + path)}">
 <meta property="og:image" content="${esc(site.url)}/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#080808">
+<meta name="theme-color" content="#0C0C0C">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
