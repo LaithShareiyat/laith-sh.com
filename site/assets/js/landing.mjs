@@ -1,4 +1,4 @@
-import { pixelText, fitLanding } from './ascii.mjs';
+import { pixelText, fitLanding, GLYPHS } from './ascii.mjs';
 import { rasterizeLines, paint } from './raster.mjs';
 import { run } from './loop.mjs';
 
@@ -20,6 +20,8 @@ export function mountLanding(header, { reducedMotion, charWidth }) {
     preT.style.fontSize = f.tagFont + 'px';
     preT.style.marginTop = f.gap + 'px';
     for (const g of [gN, gT]) g.delay = Float32Array.from(g.cov, (_, i) => (i % g.cols) / g.cols * 0.7 + Math.random() * 0.6);
+    // the name settles on its own scramble, frozen, instead of the density ramp
+    gN.glyphs = Array.from(gN.cov, () => GLYPHS[(Math.random() * GLYPHS.length) | 0]);
   };
 
   const nearFor = (pre, g) => {
@@ -31,7 +33,7 @@ export function mountLanding(header, { reducedMotion, charWidth }) {
     };
   };
   const draw = t => {
-    paint(preN, gN, { t, delay: gN.delay, near: nearFor(preN, gN) });
+    paint(preN, gN, { t, delay: gN.delay, near: nearFor(preN, gN), glyphs: gN.glyphs });
     paint(preT, gT, { t, delay: gT.delay, near: nearFor(preT, gT) });
   };
   // one repaint per pointer move; nothing runs while the pointer is still

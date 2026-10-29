@@ -106,9 +106,9 @@ export function rasterizeElement(el, { cell, charWidth }) {
   return { cov, cols, rows, font };
 }
 
-// Write a grid into a <pre>: scramble glyphs before each cell's delay, then the ramp; `near(x, y)` (0..1)
-// brightens cells by the cursor; cells left of `sweepFrom` (0..1 of the width) are cleared
-export function paint(pre, g, { t = Infinity, delay = null, near = null, sweepFrom = 0 } = {}) {
+// Write a grid into a <pre>: scramble glyphs before each cell's delay, then the ramp (or `glyphs`, one fixed
+// character per cell); `near(x, y)` (0..1) brightens cells by the cursor; cells left of `sweepFrom` (0..1 of the width) are cleared
+export function paint(pre, g, { t = Infinity, delay = null, near = null, sweepFrom = 0, glyphs = null } = {}) {
   let html = '', run = '', cls = '';
   const flush = () => { if (run) html += cls ? `<i class="${cls}">${run}</i>` : run; run = ''; };
   for (let y = 0; y < g.rows; y++) {
@@ -121,7 +121,7 @@ export function paint(pre, g, { t = Infinity, delay = null, near = null, sweepFr
           k = 'g';
         } else {
           const n = near ? near(x, y) : 0;
-          c = rampChar(a, n * 3);
+          c = glyphs ? glyphs[o] : rampChar(a, n * 3);
           k = n > 0.35 || (sweepFrom > 0 && fx - sweepFrom < 0.05) ? 'h' : a < 0.45 ? 'e' : '';
         }
       }
